@@ -1,0 +1,2 @@
+id,full_name,email,phone,budget,company,message,created_at
+uuid,John Doe,john@example.com,1234567890,5k-10k,Acme Corp,Interested in web design,2025-07-24 12:00:00
