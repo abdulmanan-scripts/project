@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Linkedin, Heart, ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -12,11 +13,11 @@ const Footer = () => {
     {
       title: "Quick Links",
       links: [
-        { href: "#home", label: "Home" },
-        { href: "#about", label: "About" },
-        { href: "#services", label: "Services" },
-        { href: "#portfolio", label: "Portfolio" },
-        { href: "#contact", label: "Contact Us" }
+        { href: "/", label: "Home" },
+        { href: "/team", label: "Meet Our Team" },
+        { href: "/services", label: "Services" },
+        { href: "/portfolio", label: "Portfolio" },
+        { href: "/contact", label: "Contact Us" }
       ]
     },
     {
@@ -134,12 +135,13 @@ const Footer = () => {
                       transition={{ type: "spring", stiffness: 300 }}
                     >
                       {link.href ? (
-                        <a 
+                        <Link 
                           href={link.href} 
+                          to={link.href}
                           className="text-gray-300 hover:text-white transition-colors"
                         >
                           {link.label}
-                        </a>
+                        </Link>
                       ) : (
                         <span className="text-gray-300">{link.label}</span>
                       )}

@@ -1,19 +1,26 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import StrategyCallModal from './StrategyCallModal';
+import { Button } from '@/components/ui/button';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const location = useLocation();
 
   const navItems = [
-    { href: "#home", label: "Home" },
-    { href: "#team", label: "Meet Our Team" },
-    { href: "#services", label: "Services" },
-    { href: "#portfolio", label: "Our Work" },
-    { href: "#cta", label: "Contact Us" }
+    { href: "/", label: "Home" },
+    { href: "/team", label: "Meet Our Team" },
+    { href: "/services", label: "Services" },
+    { href: "/portfolio", label: "Portfolio" },
+    { href: "/portfolio", label: "Our Work" },
+    { href: "/contact", label: "Contact Us" }
   ];
 
   return (
+    <>
     <motion.header 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -28,9 +35,9 @@ const Header = () => {
             transition={{ delay: 0.2 }}
             className="flex items-center mb-4 md:mb-0"
           >
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               PixelNova Studio
-            </h1>
+            </Link>
           </motion.div>
           <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto justify-center">
             <nav className="hidden md:flex space-x-8">
@@ -41,7 +48,7 @@ const Header = () => {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + index * 0.1 }}
-                  className="text-gray-700 hover:text-blue-600 transition-colors relative group"
+                  <Link
                 >
                   {item.label}
                   <motion.div
@@ -50,6 +57,19 @@ const Header = () => {
                 </motion.a>
               ))}
             </nav>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5 }}
+              className="hidden md:block"
+            >
+              <Button
+                onClick={() => setIsModalOpen(true)}
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-6 py-2"
+              >
+                Book a Strategy Call
+              </Button>
+            </motion.div>
           </div>
           <button 
             className="md:hidden mt-4 md:mt-0"
@@ -78,21 +98,49 @@ const Header = () => {
                   <motion.a
                     key={item.href}
                     href={item.href}
+                    to={item.href}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    <Link
                     className="text-gray-700 hover:text-blue-600 transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
+                      to={item.href}
+                      className={`text-gray-700 hover:text-blue-600 transition-colors ${
+                        location.pathname === item.href ? 'text-blue-600' : ''
+                      }`}
+                      location.pathname === item.href ? 'text-blue-600' : ''
+                    }`}
                   >
-                    {item.label}
+                    </Link>
                   </motion.a>
                 ))}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navItems.length * 0.1 }}
+                  className="pt-4"
+                >
+                  <Button
+                    onClick={() => {
+                      setIsModalOpen(true);
+                      setIsMenuOpen(false);
+                    }}
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold"
+                  >
+                    Book a Strategy Call
+                  </Button>
+                </motion.div>
               </nav>
-            </motion.div>
+                  </Link>
           )}
         </AnimatePresence>
       </div>
     </motion.header>
+    
+    <StrategyCallModal 
+      open={isModalOpen} 
+      onOpenChange={setIsModalOpen} 
+    />
+    </>
   );
 };
 
