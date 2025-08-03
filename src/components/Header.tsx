@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { StrategyCallModal } from './StrategyCallModal';
+import StrategyCallModal from './StrategyCallModal';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
