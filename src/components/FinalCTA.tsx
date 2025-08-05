@@ -97,8 +97,12 @@ const FinalCTA = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
+            style={{ 
+              perspective: '1000px',
+              transformStyle: 'preserve-3d'
+            }}
           >
-            <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-sm">
+            <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-sm transform-gpu hover:shadow-3xl hover:scale-105 hover:rotateY-5 hover:rotateX-3 transition-all duration-500">
               <CardHeader className="pb-4">
                 <CardTitle className="text-2xl font-bold text-gray-900 text-center">
                   Start Your Project Today
@@ -128,7 +132,7 @@ const FinalCTA = () => {
                   className="h-12"
                 />
                 <Button 
-                  className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold text-lg group"
+                  className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold text-lg group transform-gpu hover:scale-105 hover:translate-z-2"
                   onClick={() => setIsModalOpen(true)}
                 >
                   Get My Free Strategy Session
@@ -160,14 +164,28 @@ const FinalCTA = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ scale: 1.05, x: 10 }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  x: 10,
+                  rotateY: 8,
+                  z: 20
+                }}
                 transition={{ type: "spring", stiffness: 300 }}
+                style={{ 
+                  perspective: '800px',
+                  transformStyle: 'preserve-3d'
+                }}
                 className="flex items-center gap-4 text-blue-100"
               >
                 <motion.div
-                  whileHover={{ rotate: 360 }}
+                  whileHover={{ 
+                    rotate: 360,
+                    scale: 1.2,
+                    z: 15
+                  }}
                   transition={{ duration: 0.6 }}
-                  className="bg-green-500 rounded-full p-2"
+                  className="bg-green-500 rounded-full p-2 transform-gpu"
+                  style={{ transformStyle: 'preserve-3d' }}
                 >
                   <CheckCircle className="w-5 h-5 text-white" />
                 </motion.div>
@@ -177,7 +195,16 @@ const FinalCTA = () => {
             
             <motion.div
               variants={itemVariants}
-              className="mt-8 p-6 bg-white/10 rounded-lg backdrop-blur-sm"
+              className="mt-8 p-6 bg-white/10 rounded-lg backdrop-blur-sm transform-gpu hover:scale-105 hover:rotateY-3 hover:z-10 transition-all duration-300"
+              whileHover={{ 
+                scale: 1.05,
+                rotateY: -3,
+                z: 10
+              }}
+              style={{ 
+                perspective: '800px',
+                transformStyle: 'preserve-3d'
+              }}
             >
               <h4 className="text-lg font-semibold text-white mb-2">
                 🚀 Limited Time Offer

@@ -17,6 +17,10 @@ const TeamPage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            style={{ 
+              perspective: '1000px',
+              transformStyle: 'preserve-3d'
+            }}
           >
             <h1 className="text-5xl lg:text-7xl font-bold text-cosmic-text mb-6">
               Meet Our <span className="bg-gradient-to-r from-cosmic-primary to-cosmic-secondary bg-clip-text text-transparent">Expert Team</span>
@@ -27,7 +31,12 @@ const TeamPage = () => {
             <Button 
               size="lg" 
               onClick={() => setIsModalOpen(true)}
-              className="bg-gradient-to-r from-cosmic-primary to-cosmic-secondary hover:from-cosmic-primary/90 hover:to-cosmic-secondary/90 text-white font-semibold text-xl px-8 py-6 shadow-2xl"
+              className="bg-gradient-to-r from-cosmic-primary to-cosmic-secondary hover:from-cosmic-primary/90 hover:to-cosmic-secondary/90 text-white font-semibold text-xl px-8 py-6 shadow-2xl transform-gpu hover:scale-105 hover:translate-z-2 hover:shadow-3xl transition-all duration-300"
+              whileHover={{ 
+                scale: 1.05,
+                rotateY: 5,
+                z: 20
+              }}
             >
               Book a Strategy Call
               <Calendar className="ml-2 h-6 w-6" />

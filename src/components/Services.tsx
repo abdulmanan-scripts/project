@@ -122,10 +122,17 @@ const Services = () => {
               variants={itemVariants}
               whileHover={{ 
                 scale: 1.05,
+                rotateY: 12,
+                rotateX: 8,
+                z: 35,
                 transition: { type: "spring", stiffness: 300 }
               }}
+              style={{ 
+                perspective: '1000px',
+                transformStyle: 'preserve-3d'
+              }}
             >
-              <Card className={`h-full border-0 shadow-xl hover:shadow-2xl transition-all duration-300 relative ${
+              <Card className={`h-full border-0 shadow-xl hover:shadow-3xl transition-all duration-500 relative transform-gpu ${
                 service.popular ? 'ring-2 ring-blue-500 bg-gradient-to-br from-blue-50 to-white' : 'bg-white'
               }`}>
                 {service.popular && (
@@ -136,13 +143,18 @@ const Services = () => {
                 
                 <CardHeader className="pb-4">
                   <motion.div
-                    className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg ${
+                    className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg transform-gpu ${
                       service.popular 
                         ? 'bg-gradient-to-r from-blue-600 to-purple-600' 
                         : 'bg-gradient-to-r from-gray-600 to-gray-700'
                     }`}
-                    whileHover={{ rotate: 360 }}
+                    whileHover={{ 
+                      rotate: 360,
+                      scale: 1.1,
+                      z: 25
+                    }}
                     transition={{ duration: 0.6 }}
+                    style={{ transformStyle: 'preserve-3d' }}
                   >
                     <service.icon className="w-8 h-8 text-white" />
                   </motion.div>
@@ -205,18 +217,30 @@ const Services = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ 
+                scale: 1.05,
+                rotateY: 10,
+                rotateX: 5,
+                z: 30
+              }}
               transition={{ type: "spring", stiffness: 300 }}
+              style={{ 
+                perspective: '1000px',
+                transformStyle: 'preserve-3d'
+              }}
               className="text-center"
             >
-              <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
+              <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white transform-gpu">
                 <CardContent className="p-6">
                   <motion.div
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold shadow-lg"
+                    className="bg-gradient-to-r from-blue-600 to-purple-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold shadow-lg transform-gpu"
                     whileHover={{ 
                       scale: 1.1,
+                      rotateY: 180,
+                      z: 20,
                       boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
                     }}
+                    style={{ transformStyle: 'preserve-3d' }}
                   >
                     {item.step}
                   </motion.div>

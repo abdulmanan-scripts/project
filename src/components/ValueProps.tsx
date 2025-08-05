@@ -86,15 +86,27 @@ const ValueProps = () => {
               variants={itemVariants}
               whileHover={{ 
                 scale: 1.05,
+                rotateY: 15,
+                rotateX: 10,
+                z: 30,
                 transition: { type: "spring", stiffness: 300 }
               }}
+              style={{ 
+                perspective: '1000px',
+                transformStyle: 'preserve-3d'
+              }}
             >
-              <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-gray-50">
+              <Card className="h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-white to-gray-50 transform-gpu hover:translate-z-4">
                 <CardContent className="p-6 text-center">
                   <motion.div
-                    className={`bg-gradient-to-r ${benefit.color} w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg`}
-                    whileHover={{ rotate: 360 }}
+                    className={`bg-gradient-to-r ${benefit.color} w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg transform-gpu`}
+                    whileHover={{ 
+                      rotate: 360,
+                      scale: 1.1,
+                      z: 20
+                    }}
                     transition={{ duration: 0.6 }}
+                    style={{ transformStyle: 'preserve-3d' }}
                   >
                     <benefit.icon className="w-8 h-8 text-white" />
                   </motion.div>

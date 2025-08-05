@@ -56,4 +56,53 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* 3D Transform utilities */
+  .transform-gpu {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .perspective-1200 {
+    perspective: 1200px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  /* Custom 3D shadow effects */
+  .shadow-3xl {
+    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25), 0 25px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* 3D hover effects */
+  .hover\:translate-z-2:hover {
+    transform: translateZ(8px);
+  }
+  
+  .hover\:translate-z-4:hover {
+    transform: translateZ(16px);
+  }
+  
+  .hover\:rotateY-3:hover {
+    transform: rotateY(-3deg);
+  }
+  
+  .hover\:rotateY-5:hover {
+    transform: rotateY(-5deg);
+  }
+  
+  .hover\:rotateX-3:hover {
+    transform: rotateX(-3deg);
+  }
+  
+  .hover\:z-10:hover {
+    z-index: 10;
+  }
 }

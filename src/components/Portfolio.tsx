@@ -93,18 +93,28 @@ const Portfolio = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ y: -10 }}
+              whileHover={{ 
+                y: -10,
+                rotateY: 8,
+                rotateX: 5,
+                scale: 1.02,
+                z: 40
+              }}
               transition={{ type: "spring", stiffness: 300 }}
+              style={{ 
+                perspective: '1200px',
+                transformStyle: 'preserve-3d'
+              }}
             >
-              <Card className="overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-300 bg-white">
+              <Card className="overflow-hidden border-0 shadow-xl hover:shadow-3xl transition-all duration-500 bg-white transform-gpu">
                 <div className="relative overflow-hidden group">
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-64 object-cover group-hover:scale-110 group-hover:rotate-1 transition-transform duration-500 transform-gpu"
                   />
                   <motion.div 
-                    className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6"
+                    className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6 transform-gpu"
                     whileHover={{ opacity: 1 }}
                   >
                     {/* Removed View Project button */}

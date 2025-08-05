@@ -203,11 +203,20 @@ const Hero = () => {
           
           <motion.div
             variants={itemVariants}
-            whileHover={{ scale: 1.02, rotateY: 5 }}
+            whileHover={{ 
+              scale: 1.02, 
+              rotateY: 10,
+              rotateX: 5,
+              z: 50
+            }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="perspective-1000"
+            className="perspective-1000 transform-gpu"
+            style={{ 
+              perspective: '1000px',
+              transformStyle: 'preserve-3d'
+            }}
           >
-            <Card className="shadow-2xl border-0 bg-white/90 backdrop-blur-xl relative overflow-hidden">
+            <Card className="shadow-2xl border-0 bg-white/90 backdrop-blur-xl relative overflow-hidden transform-gpu hover:shadow-3xl transition-all duration-500">
               {/* Animated border */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-cosmic-primary via-cosmic-secondary to-cosmic-accent opacity-20"
@@ -221,7 +230,7 @@ const Hero = () => {
                 }}
                 transition={{ duration: 4, repeat: Infinity }}
               />
-              <div className="absolute inset-[1px] bg-white rounded-lg" />
+              <div className="absolute inset-[1px] bg-white rounded-lg transform-gpu" />
               
               <CardHeader className="pb-4">
                 <CardTitle className="text-3xl font-bold text-cosmic-primary text-center relative z-10">
@@ -256,10 +265,11 @@ const Hero = () => {
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  style={{ transformStyle: 'preserve-3d' }}
                 >
                   <Button 
                     onClick={() => setIsModalOpen(true)}
-                    className="w-full h-14 bg-gradient-to-r from-cosmic-primary to-cosmic-secondary hover:from-cosmic-primary/90 hover:to-cosmic-secondary/90 text-white font-semibold text-xl shadow-xl relative overflow-hidden group"
+                    className="w-full h-14 bg-gradient-to-r from-cosmic-primary to-cosmic-secondary hover:from-cosmic-primary/90 hover:to-cosmic-secondary/90 text-white font-semibold text-xl shadow-xl relative overflow-hidden group transform-gpu hover:shadow-2xl hover:translate-z-2"
                   >
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-cosmic-accent/30 to-transparent"

@@ -81,17 +81,31 @@ const PainPoints = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ 
+                scale: 1.02,
+                rotateY: 8,
+                rotateX: 4,
+                z: 25
+              }}
               transition={{ type: "spring", stiffness: 300 }}
+              style={{ 
+                perspective: '1000px',
+                transformStyle: 'preserve-3d'
+              }}
             >
-              <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
+              <Card className="h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white transform-gpu">
                 <CardContent className="p-6">
                   <div className="flex items-start mb-4">
                     <motion.div
                       initial={{ rotate: 0 }}
-                      whileHover={{ rotate: 360 }}
+                      whileHover={{ 
+                        rotate: 360,
+                        scale: 1.1,
+                        z: 15
+                      }}
                       transition={{ duration: 0.6 }}
-                      className="bg-red-100 p-2 rounded-full mr-3 flex-shrink-0"
+                      className="bg-red-100 p-2 rounded-full mr-3 flex-shrink-0 transform-gpu"
+                      style={{ transformStyle: 'preserve-3d' }}
                     >
                       <AlertTriangle className="w-5 h-5 text-red-500" />
                     </motion.div>

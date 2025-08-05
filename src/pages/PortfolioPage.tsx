@@ -25,6 +25,10 @@ const PortfolioPage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            style={{ 
+              perspective: '1000px',
+              transformStyle: 'preserve-3d'
+            }}
           >
             <h1 className="text-5xl lg:text-7xl font-bold text-cosmic-text mb-6">
               Our <span className="bg-gradient-to-r from-cosmic-primary to-cosmic-secondary bg-clip-text text-transparent">Portfolio</span>
@@ -35,7 +39,7 @@ const PortfolioPage = () => {
             <Button 
               size="lg" 
               onClick={() => setIsModalOpen(true)}
-              className="bg-gradient-to-r from-cosmic-primary to-cosmic-secondary hover:from-cosmic-primary/90 hover:to-cosmic-secondary/90 text-white font-semibold text-xl px-8 py-6 shadow-2xl"
+              className="bg-gradient-to-r from-cosmic-primary to-cosmic-secondary hover:from-cosmic-primary/90 hover:to-cosmic-secondary/90 text-white font-semibold text-xl px-8 py-6 shadow-2xl transform-gpu hover:scale-105 hover:translate-z-2 transition-all duration-300"
             >
               Book a Strategy Call
               <Calendar className="ml-2 h-6 w-6" />
@@ -61,8 +65,17 @@ const PortfolioPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  rotateY: 8,
+                  z: 25
+                }}
+                style={{ 
+                  perspective: '1000px',
+                  transformStyle: 'preserve-3d'
+                }}
               >
-                <Card className="text-center shadow-lg hover:shadow-xl transition-all duration-300">
+                <Card className="text-center shadow-lg hover:shadow-2xl transition-all duration-500 transform-gpu">
                   <CardContent className="p-8">
                     <stat.icon className={`w-12 h-12 ${stat.color} mx-auto mb-4`} />
                     <div className="text-4xl font-bold text-cosmic-primary mb-2">{stat.value}</div>

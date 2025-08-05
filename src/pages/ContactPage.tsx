@@ -42,6 +42,10 @@ const ContactPage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            style={{ 
+              perspective: '1000px',
+              transformStyle: 'preserve-3d'
+            }}
           >
             <h1 className="text-5xl lg:text-7xl font-bold text-cosmic-text mb-6">
               Contact <span className="bg-gradient-to-r from-cosmic-primary to-cosmic-secondary bg-clip-text text-transparent">Us</span>
@@ -52,7 +56,7 @@ const ContactPage = () => {
             <Button 
               size="lg" 
               onClick={() => setIsModalOpen(true)}
-              className="bg-gradient-to-r from-cosmic-primary to-cosmic-secondary hover:from-cosmic-primary/90 hover:to-cosmic-secondary/90 text-white font-semibold text-xl px-8 py-6 shadow-2xl"
+              className="bg-gradient-to-r from-cosmic-primary to-cosmic-secondary hover:from-cosmic-primary/90 hover:to-cosmic-secondary/90 text-white font-semibold text-xl px-8 py-6 shadow-2xl transform-gpu hover:scale-105 hover:translate-z-2 transition-all duration-300"
             >
               Book a Strategy Call
               <Calendar className="ml-2 h-6 w-6" />
@@ -72,8 +76,17 @@ const ContactPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  rotateY: 10,
+                  z: 25
+                }}
+                style={{ 
+                  perspective: '1000px',
+                  transformStyle: 'preserve-3d'
+                }}
               >
-                <Card className="text-center shadow-lg hover:shadow-xl transition-all duration-300">
+                <Card className="text-center shadow-lg hover:shadow-2xl transition-all duration-500 transform-gpu">
                   <CardContent className="p-6">
                     <div className="bg-gradient-to-r from-cosmic-primary to-cosmic-secondary w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
                       <info.icon className="w-8 h-8 text-white" />
@@ -94,8 +107,17 @@ const ContactPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: (index + 2) * 0.1 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  rotateY: 8,
+                  z: 20
+                }}
+                style={{ 
+                  perspective: '1000px',
+                  transformStyle: 'preserve-3d'
+                }}
               >
-                <Card className="text-center shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-green-50 to-blue-50">
+                <Card className="text-center shadow-lg hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-green-50 to-blue-50 transform-gpu">
                   <CardContent className="p-6">
                     <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
                     <p className="text-gray-700 font-medium">{benefit}</p>
@@ -112,8 +134,12 @@ const ContactPage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              style={{ 
+                perspective: '1000px',
+                transformStyle: 'preserve-3d'
+              }}
             >
-              <Card className="shadow-2xl border-0">
+              <Card className="shadow-2xl border-0 transform-gpu hover:scale-105 hover:rotateY-5 hover:shadow-3xl transition-all duration-500">
                 <CardHeader>
                   <CardTitle className="text-2xl font-bold text-cosmic-primary">
                     Send Us a Message
@@ -161,6 +187,10 @@ const ContactPage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              style={{ 
+                perspective: '1000px',
+                transformStyle: 'preserve-3d'
+              }}
               className="space-y-6"
             >
               <div>
@@ -178,6 +208,7 @@ const ContactPage = () => {
               </div>
 
               <Card className="bg-gradient-to-br from-blue-50 to-purple-50 border-0">
+              <Card className="bg-gradient-to-br from-blue-50 to-purple-50 border-0 transform-gpu hover:scale-105 hover:rotateY-3 hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-6">
                   <h4 className="text-lg font-semibold text-cosmic-primary mb-3">
                     🚀 Ready to Get Started?

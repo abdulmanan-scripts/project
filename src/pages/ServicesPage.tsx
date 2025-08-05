@@ -29,6 +29,10 @@ const ServicesPage = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
+              style={{ 
+                perspective: '1000px',
+                transformStyle: 'preserve-3d'
+              }}
             >
               <h1 className="text-5xl lg:text-7xl font-bold text-cosmic-text mb-6">
                 Our <span className="bg-gradient-to-r from-cosmic-primary to-cosmic-secondary bg-clip-text text-transparent">Services</span>
@@ -39,7 +43,7 @@ const ServicesPage = () => {
               <Button 
                 size="lg" 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-gradient-to-r from-cosmic-primary to-cosmic-secondary hover:from-cosmic-primary/90 hover:to-cosmic-secondary/90 text-white font-semibold text-xl px-8 py-6 shadow-2xl"
+                className="bg-gradient-to-r from-cosmic-primary to-cosmic-secondary hover:from-cosmic-primary/90 hover:to-cosmic-secondary/90 text-white font-semibold text-xl px-8 py-6 shadow-2xl transform-gpu hover:scale-105 hover:translate-z-2 transition-all duration-300"
               >
                 Book a Strategy Call
                 <Calendar className="ml-2 h-6 w-6" />
@@ -50,8 +54,12 @@ const ServicesPage = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              style={{ 
+                perspective: '1000px',
+                transformStyle: 'preserve-3d'
+              }}
             >
-              <Card className="shadow-2xl border-0 bg-white/90 backdrop-blur-xl">
+              <Card className="shadow-2xl border-0 bg-white/90 backdrop-blur-xl transform-gpu hover:scale-105 hover:rotateY-5 hover:shadow-3xl transition-all duration-500">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold text-cosmic-primary mb-6">
                     What We Deliver:

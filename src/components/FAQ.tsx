@@ -106,12 +106,21 @@ const FAQ = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ 
+                  scale: 1.02,
+                  rotateY: 5,
+                  rotateX: 3,
+                  z: 20
+                }}
                 transition={{ type: "spring", stiffness: 300 }}
+                style={{ 
+                  perspective: '1000px',
+                  transformStyle: 'preserve-3d'
+                }}
               >
                 <AccordionItem 
                   value={`item-${index}`} 
-                  className="bg-white rounded-lg shadow-sm border-0 px-6 hover:shadow-md transition-shadow"
+                  className="bg-white rounded-lg shadow-sm border-0 px-6 hover:shadow-lg transition-all duration-500 transform-gpu"
                 >
                   <AccordionTrigger className="text-left font-semibold text-gray-900 hover:text-blue-600 py-6">
                     {faq.question}

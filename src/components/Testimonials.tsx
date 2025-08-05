@@ -89,17 +89,30 @@ const Testimonials = () => {
               variants={itemVariants}
               whileHover={{ 
                 scale: 1.05,
+                rotateY: 10,
+                rotateX: 5,
+                z: 30,
                 transition: { type: "spring", stiffness: 300 }
               }}
+              style={{ 
+                perspective: '1000px',
+                transformStyle: 'preserve-3d'
+              }}
             >
-              <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-gray-50">
+              <Card className="h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-white to-gray-50 transform-gpu">
                 <CardContent className="p-6 relative">
                   <motion.div
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.5 + index * 0.1, type: "spring" }}
-                    className="absolute -top-3 -left-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full p-3"
+                    className="absolute -top-3 -left-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full p-3 transform-gpu"
+                    whileHover={{ 
+                      rotate: 360,
+                      scale: 1.2,
+                      z: 15
+                    }}
+                    style={{ transformStyle: 'preserve-3d' }}
                   >
                     <Quote className="w-6 h-6 text-white" />
                   </motion.div>
@@ -129,12 +142,21 @@ const Testimonials = () => {
                   </p>
                   
                   <div className="flex items-center gap-4">
-                    <Avatar className="w-12 h-12">
+                    <motion.div
+                      whileHover={{ 
+                        scale: 1.1,
+                        rotateY: 20,
+                        z: 10
+                      }}
+                      style={{ transformStyle: 'preserve-3d' }}
+                    >
+                      <Avatar className="w-12 h-12 transform-gpu">
                       <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
                       <AvatarFallback className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
                         {testimonial.name.split(' ').map(n => n[0]).join('')}
                       </AvatarFallback>
                     </Avatar>
+                    </motion.div>
                     <div>
                       <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
                       <p className="text-gray-600 text-sm">{testimonial.title}</p>

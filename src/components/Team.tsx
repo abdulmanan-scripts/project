@@ -109,18 +109,35 @@ const Team = () => {
               variants={itemVariants}
               whileHover={{ 
                 scale: 1.05,
+                rotateY: 12,
+                rotateX: 8,
+                z: 35,
                 transition: { type: "spring", stiffness: 300 }
               }}
+              style={{ 
+                perspective: '1000px',
+                transformStyle: 'preserve-3d'
+              }}
             >
-              <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-gray-50 group">
+              <Card className="h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-white to-gray-50 group transform-gpu">
                 <CardContent className="p-6 text-center">
                   <div className="relative mb-6">
-                    <Avatar className="w-32 h-32 mx-auto border-4 border-white shadow-lg">
+                    <motion.div
+                      whileHover={{ 
+                        scale: 1.1,
+                        rotateY: 15,
+                        z: 20
+                      }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      style={{ transformStyle: 'preserve-3d' }}
+                    >
+                      <Avatar className="w-32 h-32 mx-auto border-4 border-white shadow-lg transform-gpu hover:shadow-xl">
                       <AvatarImage src={member.image} alt={member.name} />
                       <AvatarFallback className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-2xl">
                         {member.name.split(' ').map(n => n[0]).join('')}
                       </AvatarFallback>
                     </Avatar>
+                    </motion.div>
                   </div>
                   
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>

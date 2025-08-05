@@ -110,17 +110,27 @@ const Features = () => {
               variants={itemVariants}
               whileHover={{ 
                 scale: 1.05,
+                rotateY: 15,
+                rotateX: 10,
+                z: 40,
                 transition: { type: "spring", stiffness: 300 }
               }}
+              style={{ 
+                perspective: '1200px',
+                transformStyle: 'preserve-3d'
+              }}
             >
-              <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-gray-50 group">
+              <Card className="h-full border-0 shadow-lg hover:shadow-3xl transition-all duration-500 bg-gradient-to-br from-white to-gray-50 group transform-gpu">
                 <CardContent className="p-8 text-center">
                   <motion.div
-                    className={`bg-gradient-to-r ${feature.color} w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl`}
+                    className={`bg-gradient-to-r ${feature.color} w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transform-gpu`}
                     whileHover={{ 
                       rotate: [0, -10, 10, -10, 0],
+                      scale: 1.1,
+                      z: 25,
                       transition: { duration: 0.5 }
                     }}
+                    style={{ transformStyle: 'preserve-3d' }}
                   >
                     <feature.icon className="w-10 h-10 text-white" />
                   </motion.div>
