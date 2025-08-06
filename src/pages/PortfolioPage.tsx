@@ -6,6 +6,8 @@ import StrategyCallModal from '../components/StrategyCallModal';
 import { Button } from '@/components/ui/button';
 import { Calendar, ArrowRight, Star, TrendingUp } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import ThreeScene from '../components/ThreeScene';
+import GSAPAnimations from '../components/GSAPAnimations';
 
 const PortfolioPage = () => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -21,7 +23,11 @@ const PortfolioPage = () => {
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-cosmic-background via-white to-cosmic-secondary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
+          <div className="absolute top-20 left-20 w-44 h-44 opacity-25">
+            <ThreeScene animation="float" color="#10B981" size={1.2} />
+          </div>
+          <GSAPAnimations animation="fadeInUp" duration={1.2}>
+            <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -45,6 +51,7 @@ const PortfolioPage = () => {
               <Calendar className="ml-2 h-6 w-6" />
             </Button>
           </motion.div>
+          </GSAPAnimations>
         </div>
       </section>
 

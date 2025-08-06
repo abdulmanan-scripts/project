@@ -5,6 +5,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import StrategyCallModal from './StrategyCallModal';
+import ThreeScene from './ThreeScene';
+import GSAPAnimations from './GSAPAnimations';
+import WebGLBackground from './WebGLBackground';
+import LottieAnimation from './LottieAnimation';
 
 const Hero = () => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -42,9 +46,16 @@ const Hero = () => {
 
   return (
     <>
+    <WebGLBackground className="opacity-20" particleCount={500} color="#5D3FD3" />
     <section id="home" className="relative bg-gradient-to-br from-cosmic-background via-white to-cosmic-secondary/5 py-24 overflow-hidden min-h-screen flex items-center">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 right-20 w-64 h-64">
+          <ThreeScene animation="float" color="#5D3FD3" size={1.5} />
+        </div>
+        <div className="absolute bottom-20 left-20 w-48 h-48">
+          <ThreeScene animation="pulse" color="#FFC857" size={1} />
+        </div>
         <motion.div
           variants={floatingVariants}
           animate="animate"
@@ -74,7 +85,8 @@ const Hero = () => {
           animate="visible"
           className="grid lg:grid-cols-2 gap-12 items-center"
         >
-          <div className="space-y-8">
+          <GSAPAnimations animation="slideInLeft" duration={1.2}>
+            <div className="space-y-8">
             <motion.div variants={itemVariants} className="flex items-center gap-2 mb-6">
               <motion.div
                 animate={{ rotate: 360 }}
@@ -200,8 +212,10 @@ const Hero = () => {
               </div>
             </motion.div>
           </div>
+          </GSAPAnimations>
           
-          <motion.div
+          <GSAPAnimations animation="slideInRight" duration={1.2} delay={0.3}>
+            <motion.div
             variants={itemVariants}
             whileHover={{ 
               scale: 1.02, 
@@ -288,6 +302,7 @@ const Hero = () => {
               </CardContent>
             </Card>
           </motion.div>
+          </GSAPAnimations>
         </motion.div>
       </div>
     </section>

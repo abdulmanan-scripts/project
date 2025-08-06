@@ -7,6 +7,9 @@ import { Label } from '../components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
 import StrategyCallModal from '../components/StrategyCallModal';
+import ThreeScene from '../components/ThreeScene';
+import GSAPAnimations from '../components/GSAPAnimations';
+import WebGLBackground from '../components/WebGLBackground';
 
 const ContactPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,12 +35,17 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      <WebGLBackground className="opacity-5" particleCount={300} color="#3B82F6" />
       <Header />
       
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4">
         <div className="max-w-7xl mx-auto text-center">
-          <div className="transform hover:scale-105 transition-all duration-500 perspective-1000">
+          <div className="absolute top-20 right-20 w-40 h-40 opacity-30">
+            <ThreeScene animation="pulse" color="#8B5CF6" size={1.1} />
+          </div>
+          <GSAPAnimations animation="fadeInUp" duration={1.2}>
+            <div className="transform hover:scale-105 transition-all duration-500 perspective-1000">
             <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6 transform-gpu">
               Get In Touch
             </h1>
@@ -45,6 +53,7 @@ const ContactPage = () => {
               Ready to transform your business? Let's discuss how we can help you achieve your goals.
             </p>
           </div>
+          </GSAPAnimations>
         </div>
       </section>
 
@@ -74,7 +83,8 @@ const ContactPage = () => {
                 info: "Monday - Friday\n9:00 AM - 6:00 PM EST"
               }
             ].map((item, index) => (
-              <Card 
+              <GSAPAnimations key={index} animation="bounceIn" duration={1} delay={index * 0.2}>
+                <Card 
                 key={index} 
                 className="text-center hover:shadow-3xl transition-all duration-500 transform hover:scale-105 hover:rotate-y-12 preserve-3d cursor-pointer group"
               >
@@ -88,6 +98,7 @@ const ContactPage = () => {
                   <p className="text-gray-600 whitespace-pre-line">{item.info}</p>
                 </CardContent>
               </Card>
+              </GSAPAnimations>
             ))}
           </div>
         </div>
@@ -98,7 +109,8 @@ const ContactPage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Contact Form */}
-            <div className="transform hover:scale-105 transition-all duration-500 perspective-1000">
+            <GSAPAnimations animation="slideInLeft" duration={1.2}>
+              <div className="transform hover:scale-105 transition-all duration-500 perspective-1000">
               <Card className="shadow-3xl hover:shadow-4xl transition-all duration-500 transform hover:rotate-y-6 preserve-3d">
                 <CardHeader>
                   <CardTitle className="text-3xl font-bold text-gray-800 mb-2">
@@ -169,9 +181,11 @@ const ContactPage = () => {
                 </CardContent>
               </Card>
             </div>
+            </GSAPAnimations>
 
             {/* Benefits */}
-            <div className="space-y-8">
+            <GSAPAnimations animation="slideInRight" duration={1.2} delay={0.3}>
+              <div className="space-y-8">
               <div className="transform hover:scale-105 transition-all duration-500">
                 <h3 className="text-3xl font-bold text-gray-800 mb-6">
                   Why Choose Us?
@@ -215,6 +229,7 @@ const ContactPage = () => {
                 </div>
               </div>
             </div>
+            </GSAPAnimations>
           </div>
         </div>
       </section>

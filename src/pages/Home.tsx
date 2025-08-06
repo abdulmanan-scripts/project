@@ -10,10 +10,12 @@ import Team from '../components/Team';
 import FAQ from '../components/FAQ';
 import FinalCTA from '../components/FinalCTA';
 import { Button } from '@/components/ui/button';
+import WebGLBackground from '../components/WebGLBackground';
 
 const Home = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <WebGLBackground className="opacity-10" particleCount={800} color="#5D3FD3" />
       <Hero />
       <ValueProps />
       <Portfolio />

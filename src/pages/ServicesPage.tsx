@@ -6,6 +6,8 @@ import StrategyCallModal from '../components/StrategyCallModal';
 import { Button } from '@/components/ui/button';
 import { Calendar, ArrowRight, CheckCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import ThreeScene from '../components/ThreeScene';
+import GSAPAnimations from '../components/GSAPAnimations';
 
 const ServicesPage = () => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -25,7 +27,11 @@ const ServicesPage = () => {
       <section className="py-20 bg-gradient-to-br from-cosmic-background via-white to-cosmic-secondary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
+            <div className="absolute top-10 right-10 w-40 h-40 opacity-25">
+              <ThreeScene animation="wave" color="#0EA5E9" size={1.1} />
+            </div>
+            <GSAPAnimations animation="slideInLeft" duration={1.2}>
+              <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -49,8 +55,10 @@ const ServicesPage = () => {
                 <Calendar className="ml-2 h-6 w-6" />
               </Button>
             </motion.div>
+            </GSAPAnimations>
 
-            <motion.div
+            <GSAPAnimations animation="slideInRight" duration={1.2} delay={0.3}>
+              <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -81,6 +89,7 @@ const ServicesPage = () => {
                 </CardContent>
               </Card>
             </motion.div>
+            </GSAPAnimations>
           </div>
         </div>
       </section>

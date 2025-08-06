@@ -4,6 +4,8 @@ import Team from '../components/Team';
 import StrategyCallModal from '../components/StrategyCallModal';
 import { Button } from '@/components/ui/button';
 import { Calendar, ArrowRight } from 'lucide-react';
+import ThreeScene from '../components/ThreeScene';
+import GSAPAnimations from '../components/GSAPAnimations';
 
 const TeamPage = () => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -13,7 +15,11 @@ const TeamPage = () => {
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-cosmic-background via-white to-cosmic-secondary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
+          <div className="absolute top-20 right-20 w-48 h-48 opacity-30">
+            <ThreeScene animation="rotate" color="#5D3FD3" size={1.3} />
+          </div>
+          <GSAPAnimations animation="fadeInUp" duration={1.2}>
+            <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -42,6 +48,7 @@ const TeamPage = () => {
               <Calendar className="ml-2 h-6 w-6" />
             </Button>
           </motion.div>
+          </GSAPAnimations>
         </div>
       </section>
 

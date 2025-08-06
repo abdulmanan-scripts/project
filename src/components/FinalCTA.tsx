@@ -5,6 +5,8 @@ import { CheckCircle, ArrowRight, Sparkles, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import ThreeScene from './ThreeScene';
+import GSAPAnimations from './GSAPAnimations';
 
 const FinalCTA = () => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -38,6 +40,12 @@ const FinalCTA = () => {
   return (
     <section id="cta" className="py-20 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 relative overflow-hidden">
       {/* Background decorations */}
+      <div className="absolute top-20 left-20 w-48 h-48 opacity-20">
+        <ThreeScene animation="float" color="#FFFFFF" size={1.5} />
+      </div>
+      <div className="absolute bottom-20 right-20 w-40 h-40 opacity-15">
+        <ThreeScene animation="pulse" color="#FFC857" size={1.2} />
+      </div>
       <motion.div
         animate={{
           rotate: 360,
@@ -63,7 +71,8 @@ const FinalCTA = () => {
         className="absolute bottom-10 right-10 w-24 h-24 bg-white/10 rounded-full"
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <motion.div
+        <GSAPAnimations animation="fadeInUp" duration={1}>
+          <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -90,9 +99,11 @@ const FinalCTA = () => {
             See if PixelNova Studio is right for you. Book a free strategy session and discover how we can help your business grow with a website that actually works.
           </motion.p>
         </motion.div>
+        </GSAPAnimations>
         
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
+          <GSAPAnimations animation="slideInLeft" duration={1.2}>
+            <motion.div
             variants={itemVariants}
             initial="hidden"
             whileInView="visible"
@@ -146,8 +157,10 @@ const FinalCTA = () => {
               </CardContent>
             </Card>
           </motion.div>
+          </GSAPAnimations>
           
-          <motion.div
+          <GSAPAnimations animation="slideInRight" duration={1.2} delay={0.3}>
+            <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -214,6 +227,7 @@ const FinalCTA = () => {
               </p>
             </motion.div>
           </motion.div>
+          </GSAPAnimations>
         </div>
       </div>
     </section>

@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { TrendingUp, Users, Award, Clock, ArrowUpRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import ThreeScene from './ThreeScene';
+import GSAPAnimations from './GSAPAnimations';
 
 const ValueProps = () => {
   const benefits = [
@@ -58,13 +60,17 @@ const ValueProps = () => {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <GSAPAnimations animation="fadeInUp" duration={1}>
+          <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <div className="absolute top-0 right-0 w-32 h-32 opacity-30">
+            <ThreeScene animation="rotate" color="#5D3FD3" size={0.8} />
+          </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Why Choose PixelNova Studio?
           </h2>
@@ -72,6 +78,7 @@ const ValueProps = () => {
             We don't just build websites – we create digital experiences that drive results and grow your business.
           </p>
         </motion.div>
+        </GSAPAnimations>
         
         <motion.div
           variants={containerVariants}
@@ -81,7 +88,8 @@ const ValueProps = () => {
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {benefits.map((benefit, index) => (
-            <motion.div
+            <GSAPAnimations key={index} animation="scaleIn" duration={0.8} delay={index * 0.2}>
+              <motion.div
               key={index}
               variants={itemVariants}
               whileHover={{ 
@@ -127,6 +135,7 @@ const ValueProps = () => {
                 </CardContent>
               </Card>
             </motion.div>
+            </GSAPAnimations>
           ))}
         </motion.div>
       </div>

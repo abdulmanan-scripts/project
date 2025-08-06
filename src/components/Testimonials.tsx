@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import ThreeScene from './ThreeScene';
+import GSAPAnimations from './GSAPAnimations';
 
 const Testimonials = () => {
   const testimonials = [
@@ -61,13 +63,17 @@ const Testimonials = () => {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <GSAPAnimations animation="fadeInUp" duration={1}>
+          <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <div className="absolute top-0 right-10 w-28 h-28 opacity-30">
+            <ThreeScene animation="rotate" color="#F59E0B" size={0.9} />
+          </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             What Our Clients Say
           </h2>
@@ -75,6 +81,7 @@ const Testimonials = () => {
             Don't just take our word for it – hear from business owners who've experienced real results.
           </p>
         </motion.div>
+        </GSAPAnimations>
         
         <motion.div
           variants={containerVariants}
@@ -84,7 +91,8 @@ const Testimonials = () => {
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {testimonials.map((testimonial, index) => (
-            <motion.div
+            <GSAPAnimations key={index} animation="scaleIn" duration={1} delay={index * 0.2}>
+              <motion.div
               key={index}
               variants={itemVariants}
               whileHover={{ 
@@ -166,6 +174,7 @@ const Testimonials = () => {
                 </CardContent>
               </Card>
             </motion.div>
+            </GSAPAnimations>
           ))}
         </motion.div>
       </div>

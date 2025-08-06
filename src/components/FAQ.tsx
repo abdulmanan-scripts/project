@@ -7,6 +7,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import ThreeScene from './ThreeScene';
+import GSAPAnimations from './GSAPAnimations';
 
 const FAQ = () => {
   const faqs = [
@@ -76,13 +78,17 @@ const FAQ = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <GSAPAnimations animation="fadeInUp" duration={1}>
+          <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <div className="absolute top-10 right-10 w-24 h-24 opacity-25">
+            <ThreeScene animation="wave" color="#EC4899" size={0.7} />
+          </div>
           <div className="flex items-center justify-center gap-2 mb-4">
             <HelpCircle className="w-6 h-6 text-blue-600" />
             <span className="text-blue-600 font-semibold">Got Questions?</span>
@@ -94,6 +100,7 @@ const FAQ = () => {
             Get answers to the most common questions about our services and process.
           </p>
         </motion.div>
+        </GSAPAnimations>
         
         <motion.div
           variants={containerVariants}
@@ -103,7 +110,8 @@ const FAQ = () => {
         >
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
-              <motion.div
+              <GSAPAnimations key={index} animation="slideInLeft" duration={0.8} delay={index * 0.1}>
+                <motion.div
                 key={index}
                 variants={itemVariants}
                 whileHover={{ 
@@ -130,6 +138,7 @@ const FAQ = () => {
                   </AccordionContent>
                 </AccordionItem>
               </motion.div>
+              </GSAPAnimations>
             ))}
           </Accordion>
         </motion.div>

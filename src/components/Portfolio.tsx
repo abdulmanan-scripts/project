@@ -4,6 +4,8 @@ import { ArrowRight, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import ThreeScene from './ThreeScene';
+import GSAPAnimations from './GSAPAnimations';
 
 const Portfolio = () => {
   const projects = [
@@ -68,13 +70,17 @@ const Portfolio = () => {
   return (
     <section id="portfolio" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <GSAPAnimations animation="fadeInUp" duration={1}>
+          <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <div className="absolute top-0 left-1/3 w-36 h-36 opacity-20">
+            <ThreeScene animation="float" color="#10B981" size={1.1} />
+          </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Our Work • Your Success
           </h2>
@@ -82,6 +88,7 @@ const Portfolio = () => {
             See how we've helped businesses like yours achieve remarkable results with custom web solutions.
           </p>
         </motion.div>
+        </GSAPAnimations>
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -90,7 +97,8 @@ const Portfolio = () => {
           className="grid md:grid-cols-2 gap-8 mb-12"
         >
           {projects.map((project, index) => (
-            <motion.div
+            <GSAPAnimations key={index} animation="slideInUp" duration={1} delay={index * 0.2}>
+              <motion.div
               key={index}
               variants={itemVariants}
               whileHover={{ 
@@ -149,6 +157,7 @@ const Portfolio = () => {
                 </CardContent>
               </Card>
             </motion.div>
+            </GSAPAnimations>
           ))}
         </motion.div>
         <motion.div

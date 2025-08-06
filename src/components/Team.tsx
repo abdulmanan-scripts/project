@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import ThreeScene from './ThreeScene';
+import GSAPAnimations from './GSAPAnimations';
 
 const Team = () => {
   const teamMembers = [
@@ -81,13 +83,17 @@ const Team = () => {
   return (
     <section id="team" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <GSAPAnimations animation="fadeInUp" duration={1}>
+          <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <div className="absolute top-0 right-1/4 w-32 h-32 opacity-25">
+            <ThreeScene animation="pulse" color="#8B5CF6" size={1} />
+          </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Meet Our Team
           </h2>
@@ -95,6 +101,7 @@ const Team = () => {
             The talented professionals behind every successful project. We're passionate about delivering exceptional results.
           </p>
         </motion.div>
+        </GSAPAnimations>
         
         <motion.div
           variants={containerVariants}
@@ -104,7 +111,8 @@ const Team = () => {
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {teamMembers.map((member, index) => (
-            <motion.div
+            <GSAPAnimations key={index} animation="rotateIn" duration={1} delay={index * 0.15}>
+              <motion.div
               key={index}
               variants={itemVariants}
               whileHover={{ 
@@ -161,6 +169,7 @@ const Team = () => {
                 </CardContent>
               </Card>
             </motion.div>
+            </GSAPAnimations>
           ))}
         </motion.div>
       </div>

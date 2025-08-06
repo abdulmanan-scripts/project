@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Monitor, Code, Search, ArrowRight, CheckCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import ThreeScene from './ThreeScene';
+import GSAPAnimations from './GSAPAnimations';
 
 const Services = () => {
   const services = [
@@ -94,13 +96,17 @@ const Services = () => {
   return (
     <section id="services" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <GSAPAnimations animation="fadeInUp" duration={1}>
+          <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <div className="absolute top-10 left-10 w-40 h-40 opacity-20">
+            <ThreeScene animation="wave" color="#0EA5E9" size={1.2} />
+          </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Our Services
           </h2>
@@ -108,6 +114,7 @@ const Services = () => {
             Comprehensive web solutions designed to grow your business and establish your online presence.
           </p>
         </motion.div>
+        </GSAPAnimations>
         
         <motion.div
           variants={containerVariants}
@@ -117,7 +124,8 @@ const Services = () => {
           className="grid lg:grid-cols-3 gap-8 mb-20"
         >
           {services.map((service, index) => (
-            <motion.div
+            <GSAPAnimations key={index} animation="bounceIn" duration={1} delay={index * 0.2}>
+              <motion.div
               key={index}
               variants={itemVariants}
               whileHover={{ 
@@ -188,6 +196,7 @@ const Services = () => {
                 </CardContent>
               </Card>
             </motion.div>
+            </GSAPAnimations>
           ))}
         </motion.div>
         
