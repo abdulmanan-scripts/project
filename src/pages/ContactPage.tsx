@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
 import StrategyCallModal from '../components/StrategyCallModal';
 
-export const ContactPage = () => {
+const ContactPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -244,3 +244,5 @@ export const ContactPage = () => {
     </div>
   );
 };
+
+export default ContactPage;
