@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X, Zap, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import StrategyCallModal from './StrategyCallModal';
 
@@ -48,7 +48,17 @@ export function Header() {
             </nav>
 
             {/* CTA Button */}
-            <div className="hidden md:flex">
+            <div className="hidden md:flex items-center space-x-3">
+              <Link to="/admin">
+                <Button 
+                  variant="outline"
+                  size="sm"
+                  className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                >
+                  <Shield className="h-4 w-4 mr-2" />
+                  Admin
+                </Button>
+              </Link>
               <Button 
                 onClick={() => setIsModalOpen(true)}
                 className="bg-blue-600 hover:bg-blue-700 text-white"
@@ -90,6 +100,14 @@ export function Header() {
                     {item.name}
                   </Link>
                 ))}
+                <Link
+                  to="/admin"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-sm font-medium transition-colors hover:text-blue-600 text-gray-700 flex items-center"
+                >
+                  <Shield className="h-4 w-4 mr-2" />
+                  Admin Panel
+                </Link>
                 <Button 
                   onClick={() => {
                     setIsModalOpen(true);
