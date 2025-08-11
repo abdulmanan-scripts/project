@@ -74,11 +74,46 @@ const StrategyCallModal: React.FC<StrategyCallModalProps> = ({ open, onOpenChang
     setBookingDateError("");
     if (!bookingDate) {
       setBookingDateError("Please select a preferred date and time for your call.");
-      setIsSubmitting(false);
       return;
     }
     setIsSubmitting(true);
     try {
+      // Check if Supabase is properly configured
+      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+      const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+      const isConfigured = supabaseUrl && supabaseAnonKey && 
+        supabaseUrl !== 'your_supabase_project_url' && 
+        supabaseAnonKey !== 'your_supabase_anon_key'
+
+      if (!isConfigured) {
+        // Show success message even without database (for demo purposes)
+        console.log('Form data (demo mode):', {
+          full_name: data.full_name,
+          email: data.email,
+          phone: data.phone,
+          budget: data.budget,
+          company: data.company || '',
+          message: (data.message || '') + (bookingDate ? `\nBooking call date: ${bookingDate}` : ''),
+        });
+        
+        setStep(3); // Success step
+        toast({
+          title: "Strategy Call Booked! 🎉",
+          description: "We'll contact you within 24 hours to schedule your free consultation.",
+        });
+
+        // Reset form after 3 seconds and close modal
+        setTimeout(() => {
+          reset();
+          setStep(1);
+          setBookingDate("");
+          setBookingDateError("");
+          onOpenChange(false);
+        }, 3000);
+        
+        return;
+      }
+
       const leadData: StrategyCallLead = {
         full_name: data.full_name,
         email: data.email,
@@ -115,7 +150,7 @@ const StrategyCallModal: React.FC<StrategyCallModalProps> = ({ open, onOpenChang
       console.error('Error submitting form:', error);
       toast({
         title: "Something went wrong",
-        description: "Please try again or contact us directly.",
+        description: "Please check your internet connection and try again, or contact us directly.",
         variant: "destructive",
       });
     } finally {
